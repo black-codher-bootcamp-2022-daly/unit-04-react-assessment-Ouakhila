@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-//import { useState } from "react";
 
 export function Header(props) {
   return (
@@ -12,13 +11,13 @@ export function Header(props) {
         </li>
 
         <li>
-          <Link to="/About" className="List">
+          <Link to="/about" className="List">
             About
           </Link>
         </li>
         <li>
-          <Link to="/Basket" className="List">
-            Basket {props.count}
+          <Link to="/basket" className="List">
+            Basket {props.itemCount}
           </Link>
         </li>
       </ul>

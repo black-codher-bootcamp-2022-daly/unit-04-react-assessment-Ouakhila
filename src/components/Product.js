@@ -1,5 +1,12 @@
 function Product(props) {
-  const { trackName, artistName, trackPrice, currency, artworkUrl30 } = props;
+  const {
+    trackName,
+    artistName,
+    trackPrice,
+    currency,
+    artworkUrl30,
+    removeFromBasket,
+  } = props;
 
   return (
     <div className="Product-div">
@@ -14,7 +21,7 @@ function Product(props) {
       <img src={artworkUrl30} alt={trackName} />
 
       <button onClick={() => props.onClick(props.id)}>
-        {props.isInTheBasket ? "Remove" : "Add"}
+        {removeFromBasket ? "Remove" : "Add"}
       </button>
     </div>
   );

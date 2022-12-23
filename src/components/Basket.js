@@ -1,11 +1,20 @@
 import Product from "./Product";
+import { useState } from "react";
+//import data from "./components/models/example-data.json";
 
-export const Basket = ({ listOfProducts }) => {
-  //trackName, artistName, trackPrice, currency, artworkUrl30
+export const Basket = ({ basket, removeFromBasket }) => {
+  //   const [removeProduct, setRemoveProduct] = useState(basket);
+
+  //   function removeFromBasket(id) {
+  //     const newRemov = removeProduct.filter((item) => item.id !== id);
+  //     setRemoveProduct(newRemov);
+  //     console.log({ newRemov, basket });
+  //   }
+
   return (
     <div>
-      <h2> You have Added: {listOfProducts.length}</h2>
-      {listOfProducts.map((el) => (
+      <h2> You have Added: {basket.length}</h2>
+      {basket.map((el) => (
         <Product
           key={el.id}
           trackName={el.trackName}
@@ -13,7 +22,9 @@ export const Basket = ({ listOfProducts }) => {
           currency={el.currency}
           trackPrice={el.trackPrice}
           artworkUrl30={el.artworkUrl30}
-          isInTheBasket={true}
+          removeFromBasket={true}
+          onClick={() => removeFromBasket(el.id)}
+          //onClick={() => el.onClick(el.id)}
         />
       ))}
     </div>

@@ -15,18 +15,25 @@ function App() {
   const [products, setProducts] = useState(data);
   const [basket, setBasket] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const [count, setCounter] = useState(0);
+  const [itemCount, setCounter] = useState(0);
+  const [removeProduct, setRemoveProduct] = useState(data);
 
-  function addProduct(id) {
+  function addToBasket(id) {
     const productToAdd = basket;
     productToAdd.push(id);
     setBasket(productToAdd);
-    setCounter(count + 1);
+    setCounter(itemCount + 1);
     console.log({ productToAdd, basket });
   }
 
+  function removeFromBasket(id) {
+    const newRemov = basket.filter((item) => item.id !== id);
+    setRemoveProduct(newRemov);
+    console.log({ newRemov, basket });
+  }
+
   async function findProducts(value) {
-    const url = `> curl https://itunes.apple.com/search?q=${value}term=orange&limit=30&explicit=no`;
+    const url = `curl https://itunes.apple.com/search?q=${value}term=orange&limit=30&explicit=no`;
 
     const results = await fetch(url).then((res) => res.json());
     if (!results.error) {
@@ -36,8 +43,8 @@ function App() {
 
   return (
     <div className="App">
-      Ouakhila was here
-      <Header count={count}></Header>
+      <h1>Media Store</h1>
+      <Header itemCount={itemCount}></Header>
       <Routes>
         <Route
           path="/"
@@ -57,17 +64,23 @@ function App() {
                     currency={item.currency}
                     trackPrice={item.trackPrice}
                     artworkUrl30={item.artworkUrl30}
-                    onClick={() => addProduct(item)}
+                    onClick={() => addToBasket(item)}
+                    //removeFromBasket={removeFromBasket}
                   ></Product>
                 ))}
               </ProductList>
             </Home>
           }
         ></Route>
-        <Route path="About" element={<About />}></Route>
+        <Route path="about" element={<About />}></Route>
         <Route
-          path="Basket"
-          element={<Basket listOfProducts={basket}></Basket>}
+          path="basket"
+          element={
+            <Basket
+              basket={basket}
+              removeFromBasket={removeFromBasket}
+            ></Basket>
+          }
         ></Route>
       </Routes>
     </div>
