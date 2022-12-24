@@ -16,14 +16,14 @@ export const Basket = ({ basket, removeFromBasket }) => {
       <h2> You have Added: {basket.length}</h2>
       {basket.map((el) => (
         <Product
-          key={el.id}
+          key={el.trackId}
           trackName={el.trackName}
           artistName={el.artistName}
           currency={el.currency}
           trackPrice={el.trackPrice}
           artworkUrl30={el.artworkUrl30}
           removeFromBasket={true}
-          onClick={() => removeFromBasket(el.id)}
+          onClick={() => removeFromBasket(el.trackId)}
           //onClick={() => el.onClick(el.id)}
         />
       ))}

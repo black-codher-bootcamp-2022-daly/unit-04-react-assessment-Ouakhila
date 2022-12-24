@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import data from "./models/example-data.json";
+import data from "./models/data.json";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
 import { useState } from "react";
@@ -16,7 +16,7 @@ function App() {
   const [basket, setBasket] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [itemCount, setCounter] = useState(0);
-  const [removeProduct, setRemoveProduct] = useState(data);
+  const [removeProduct, setRemoveProduct] = useState(basket);
 
   function addToBasket(id) {
     const productToAdd = basket;
@@ -26,11 +26,22 @@ function App() {
     console.log({ productToAdd, basket });
   }
 
-  function removeFromBasket(id) {
-    const newRemov = basket.filter((item) => item.id !== id);
+  function removeFromBasket(trackId) {
+    const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
+    basket.shift(trackId);
     setRemoveProduct(newRemov);
+    setCounter(itemCount - 1);
     console.log({ newRemov, basket });
   }
+
+  // const removeFromBasket = () => {
+  //   setRemoveProduct((item) =>
+  //     item.filter((el) => {
+  //       return el.id !== item;
+  //     })
+  //   );
+  //   console.log(setRemoveProduct);
+  // };
 
   async function findProducts(value) {
     const url = `curl https://itunes.apple.com/search?q=${value}term=orange&limit=30&explicit=no`;
@@ -58,7 +69,7 @@ function App() {
                 ></Search>
                 {products.map((item) => (
                   <Product
-                    key={item.id}
+                    key={item.trackId}
                     trackName={item.trackName}
                     artistName={item.artistName}
                     currency={item.currency}
