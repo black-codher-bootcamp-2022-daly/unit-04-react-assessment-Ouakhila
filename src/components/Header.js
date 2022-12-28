@@ -5,18 +5,18 @@ export function Header(props) {
     <div className="Nav-element">
       <ul className="Nav-bar-list">
         <li>
-          <Link to="/" className="List">
+          <Link to="/" id="homelink" className="List">
             Home
           </Link>
         </li>
 
         <li>
-          <Link to="/about" className="List">
+          <Link to="/about" id="aboutlink" className="List">
             About
           </Link>
         </li>
         <li>
-          <Link to="/basket" className="List">
+          <Link to="/basket" id="basketlink" className="List">
             Basket {props.itemCount}
           </Link>
         </li>

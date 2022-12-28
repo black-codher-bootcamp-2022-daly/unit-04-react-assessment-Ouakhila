@@ -1,8 +1,8 @@
 import Product from "./Product";
-import { useState } from "react";
+//import { useState } from "react";
 //import data from "./components/models/example-data.json";
 
-export const Basket = ({ basket, removeFromBasket }) => {
+export const Basket = ({ basket, removeFromBasket, total }) => {
   //   const [removeProduct, setRemoveProduct] = useState(basket);
 
   //   function removeFromBasket(id) {
@@ -24,6 +24,7 @@ export const Basket = ({ basket, removeFromBasket }) => {
           artworkUrl30={el.artworkUrl30}
           removeFromBasket={true}
           onClick={() => removeFromBasket(el.trackId)}
+
           //onClick={() => el.onClick(el.id)}
         />
       ))}

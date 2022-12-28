@@ -10,6 +10,7 @@ import { Header } from "./components/Header";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Basket } from "./components/Basket";
+//import { BasketTotal } from "./components/BasketTotal";
 
 function App() {
   const [products, setProducts] = useState(data);
@@ -17,10 +18,23 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [itemCount, setCounter] = useState(0);
   const [removeProduct, setRemoveProduct] = useState(basket);
+  const [totalPrice, setTotal] = useState(basket);
+
+  function total() {
+    let allTotal = 0;
+    totalPrice.forEach((el) => {
+      allTotal += el.trackPrice;
+      return allTotal;
+    });
+
+    setTotal(totalPrice);
+    //console.log(totalPrice);
+  }
 
   function addToBasket(id) {
     const productToAdd = basket;
     productToAdd.push(id);
+
     setBasket(productToAdd);
     setCounter(itemCount + 1);
     console.log({ productToAdd, basket });
@@ -33,15 +47,6 @@ function App() {
     setCounter(itemCount - 1);
     console.log({ newRemov, basket });
   }
-
-  // const removeFromBasket = () => {
-  //   setRemoveProduct((item) =>
-  //     item.filter((el) => {
-  //       return el.id !== item;
-  //     })
-  //   );
-  //   console.log(setRemoveProduct);
-  // };
 
   async function findProducts(value) {
     const url = `curl https://itunes.apple.com/search?q=${value}term=orange&limit=30&explicit=no`;
@@ -76,6 +81,7 @@ function App() {
                     trackPrice={item.trackPrice}
                     artworkUrl30={item.artworkUrl30}
                     onClick={() => addToBasket(item)}
+                    total={total}
                     //removeFromBasket={removeFromBasket}
                   ></Product>
                 ))}
@@ -90,7 +96,10 @@ function App() {
             <Basket
               basket={basket}
               removeFromBasket={removeFromBasket}
-            ></Basket>
+              total={total}
+            >
+              {/* <BasketTotal BasketTotal={BasketTotal}>hello</BasketTotal> */}
+            </Basket>
           }
         ></Route>
       </Routes>
