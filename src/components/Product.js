@@ -20,7 +20,6 @@ function Product(props) {
         </h4>
       </div>
       <img src={artworkUrl30} alt={trackName} />
-
       <button onClick={() => props.onClick(trackId)}>
         {removeFromBasket ? "Remove" : "Add"}
       </button>

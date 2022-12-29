@@ -16,7 +16,7 @@ export function Header(props) {
           </Link>
         </li>
         <li>
-          <Link to="/basket" id="basketlink" className="List">
+          <Link to="/basket/basketTotal" id="basketlink" className="List">
             Basket {props.itemCount}
           </Link>
         </li>

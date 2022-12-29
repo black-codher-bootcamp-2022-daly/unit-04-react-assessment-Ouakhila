@@ -1,16 +1,8 @@
 import Product from "./Product";
-//import { useState } from "react";
-//import data from "./components/models/example-data.json";
+//import { BasketTotal } from "./BasketTotal";
+//import { toContainHTML } from "@testing-library/jest-dom/dist/matchers";
 
 export const Basket = ({ basket, removeFromBasket, total }) => {
-  //   const [removeProduct, setRemoveProduct] = useState(basket);
-
-  //   function removeFromBasket(id) {
-  //     const newRemov = removeProduct.filter((item) => item.id !== id);
-  //     setRemoveProduct(newRemov);
-  //     console.log({ newRemov, basket });
-  //   }
-
   return (
     <div>
       <h2> You have Added: {basket.length}</h2>
@@ -24,8 +16,6 @@ export const Basket = ({ basket, removeFromBasket, total }) => {
           artworkUrl30={el.artworkUrl30}
           removeFromBasket={true}
           onClick={() => removeFromBasket(el.trackId)}
-
-          //onClick={() => el.onClick(el.id)}
         />
       ))}
     </div>
