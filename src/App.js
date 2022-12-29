@@ -72,11 +72,12 @@ function App() {
                 {products.map((item) => (
                   <Product
                     key={item.trackId}
-                    trackName={item.trackName}
-                    artistName={item.artistName}
+                    kind={item.kind}
+                    id={item.trackId}
+                    name={item.trackName}
+                    thumbnail={item.artworkUrl100}
                     currency={item.currency}
-                    trackPrice={item.trackPrice}
-                    artworkUrl30={item.artworkUrl30}
+                    price={item.trackPrice}
                     onClick={() => addToBasket(item)}
                   ></Product>
                 ))}

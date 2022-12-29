@@ -8,11 +8,12 @@ export const Basket = ({ basket, removeFromBasket }) => {
       {basket.map((el) => (
         <Product
           key={el.trackId}
-          trackName={el.trackName}
-          artistName={el.artistName}
+          kind={el.kind}
+          id={el.trackId}
+          name={el.trackName}
+          thumbnail={el.artworkUrl100}
           currency={el.currency}
-          trackPrice={el.trackPrice}
-          artworkUrl30={el.artworkUrl30}
+          price={el.trackPrice}
           removeFromBasket={true}
           onClick={() => removeFromBasket(el.trackId)}
         />
