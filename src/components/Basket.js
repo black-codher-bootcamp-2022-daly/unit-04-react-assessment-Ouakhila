@@ -2,10 +2,9 @@ import Product from "./Product";
 //import { BasketTotal } from "./BasketTotal";
 //import { toContainHTML } from "@testing-library/jest-dom/dist/matchers";
 
-export const Basket = ({ basket, removeFromBasket, total }) => {
+export const Basket = ({ basket, removeFromBasket }) => {
   return (
     <div>
-      <h2> You have Added: {basket.length}</h2>
       {basket.map((el) => (
         <Product
           key={el.trackId}

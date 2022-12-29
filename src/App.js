@@ -11,12 +11,13 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Basket } from "./components/Basket";
 import { BasketTotal } from "./components/BasketTotal";
+import { BasketCount } from "./components/BasketCount";
 
 function App() {
   const [products, setProducts] = useState(data);
   const [basket, setBasket] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const [itemCount, setCounter] = useState(0);
+  const [count, setCounter] = useState(0);
   const [removeProduct, setRemoveProduct] = useState(basket);
   const [totalPrice, setTotal] = useState(basket);
 
@@ -30,7 +31,7 @@ function App() {
 
     productToAdd.push(id);
     setBasket(productToAdd);
-    setCounter(itemCount + 1);
+    setCounter(count + 1);
     setTotal(total);
     console.log({ productToAdd, basket, total, totalPrice });
   }
@@ -39,7 +40,7 @@ function App() {
     const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
     basket.shift(trackId);
     setRemoveProduct(newRemov);
-    setCounter(itemCount - 1);
+    setCounter(count - 1);
     console.log({ newRemov, basket, total });
   }
 
@@ -56,7 +57,7 @@ function App() {
     <div className="App">
       <h1>Media Store</h1>
 
-      <Header itemCount={itemCount}></Header>
+      <Header itemCount={count}></Header>
       <Routes>
         <Route
           path="/"
@@ -85,9 +86,10 @@ function App() {
         ></Route>
         <Route path="/about" element={<About />}></Route>
         <Route
-          path="/basket/basketTotal"
+          path="/basket"
           element={
             <div>
+              <BasketCount basketCount={count} />
               <Basket basket={basket} removeFromBasket={removeFromBasket} />
               <BasketTotal basketTotal={total} />
             </div>
