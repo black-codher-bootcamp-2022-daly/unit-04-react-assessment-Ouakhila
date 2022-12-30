@@ -1,4 +1,4 @@
-function ProductList(props) {
+export function ProductList(props) {
   return (
     <main>
       {props.children}
@@ -6,4 +6,4 @@ function ProductList(props) {
     </main>
   );
 }
-export default ProductList;
+//export default ProductList;

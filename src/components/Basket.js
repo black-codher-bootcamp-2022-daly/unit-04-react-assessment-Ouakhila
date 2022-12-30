@@ -1,4 +1,4 @@
-import Product from "./Product";
+import { Product } from "./Product";
 //import { BasketTotal } from "./BasketTotal";
 //import { toContainHTML } from "@testing-library/jest-dom/dist/matchers";
 

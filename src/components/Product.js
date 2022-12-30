@@ -1,4 +1,4 @@
-function Product(props) {
+export function Product(props) {
   const {
     trackId,
     kind,
@@ -28,4 +28,4 @@ function Product(props) {
   );
 }
 
-export default Product;
+//export default Product;

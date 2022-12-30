@@ -1,8 +1,8 @@
 import "./styles/App.css";
 import React from "react";
 import data from "./models/data.json";
-import Product from "./components/Product";
-import ProductList from "./components/ProductList";
+import { Product } from "./components/Product";
+import { ProductList } from "./components/ProductList";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Search } from "./components/Search";
