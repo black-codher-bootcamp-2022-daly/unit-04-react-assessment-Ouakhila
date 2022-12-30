@@ -3,7 +3,7 @@ import React from "react";
 import data from "./models/data.json";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Search } from "./components/Search";
 import { Header } from "./components/Header";
@@ -15,33 +15,41 @@ import { BasketCount } from "./components/BasketCount";
 
 function App() {
   const [products, setProducts] = useState(data);
-  const [basket, setBasket] = useState([]);
+  const [product, setBasket] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [count, setCounter] = useState(0);
-  const [removeProduct, setRemoveProduct] = useState(basket);
-  const [totalPrice, setTotal] = useState(basket);
+  const [removeProduct, setRemoveProduct] = useState(product);
+  const [totalPrice, setTotal] = useState(product);
+  const [message, setMessage] = useState(" ");
+  useEffect(() => {
+    console.log("useEffect");
+    setMessage(() => "Sorry, no items in basket...");
+    // if ((count = 0)) {
+    //   return <h1>Sorry, no items in basket...</h1>;
+    // }
+  }, [count]);
 
-  const total = basket.reduce(
+  const total = product.reduce(
     (accumulator, el) => accumulator + el.trackPrice,
     0
   );
 
   function addToBasket(id) {
-    const productToAdd = basket;
+    const productToAdd = product;
 
     productToAdd.push(id);
     setBasket(productToAdd);
     setCounter(count + 1);
     setTotal(total);
-    console.log({ productToAdd, basket, total, totalPrice });
+    console.log({ productToAdd, product, total, totalPrice });
   }
 
   function removeFromBasket(trackId) {
     const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
-    basket.shift(trackId);
+    product.shift(trackId);
     setRemoveProduct(newRemov);
     setCounter(count - 1);
-    console.log({ newRemov, basket, total });
+    console.log({ newRemov, product, total });
   }
 
   async function findProducts(value) {
@@ -91,7 +99,7 @@ function App() {
           element={
             <div>
               <BasketCount basketCount={count} />
-              <Basket basket={basket} removeFromBasket={removeFromBasket} />
+              <Basket basket={product} removeFromBasket={removeFromBasket} />
               <BasketTotal basketTotal={total} />
             </div>
           }
