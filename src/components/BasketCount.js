@@ -1,4 +1,4 @@
-export function BasketCount(props) {
+function BasketCount(props) {
   const { basketCount } = props;
   console.log(basketCount);
   return (
@@ -8,3 +8,4 @@ export function BasketCount(props) {
     </div>
   );
 }
+export default BasketCount;

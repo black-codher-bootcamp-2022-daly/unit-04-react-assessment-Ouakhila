@@ -1,7 +1,7 @@
 import React from "react";
 //import PropTypes from "prop-types";
 
-export const Search = (props) => {
+const Search = (props) => {
   const { keyword, setKeyword, findProducts } = props;
 
   function handleChange(e) {
@@ -31,3 +31,4 @@ export const Search = (props) => {
     </form>
   );
 };
+export default Search;

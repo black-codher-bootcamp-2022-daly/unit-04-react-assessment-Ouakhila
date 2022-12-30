@@ -1,8 +1,8 @@
-import { Product } from "./Product";
+import Product from "./Product";
 //import { BasketTotal } from "./BasketTotal";
 //import { toContainHTML } from "@testing-library/jest-dom/dist/matchers";
 
-export const Basket = ({ basket, removeFromBasket }) => {
+const Basket = ({ basket, removeFromBasket }) => {
   return (
     <div>
       {basket.map((el) => (
@@ -21,3 +21,4 @@ export const Basket = ({ basket, removeFromBasket }) => {
     </div>
   );
 };
+export default Basket;

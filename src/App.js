@@ -1,17 +1,17 @@
 import "./styles/App.css";
 import React from "react";
 import data from "./models/data.json";
-import { Product } from "./components/Product";
-import { ProductList } from "./components/ProductList";
+import Product from "./components/Product";
+import ProductList from "./components/ProductList";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Search } from "./components/Search";
-import { Header } from "./components/Header";
-import { Home } from "./pages/Home";
-import { About } from "./pages/About";
-import { Basket } from "./components/Basket";
-import { BasketTotal } from "./components/BasketTotal";
-import { BasketCount } from "./components/BasketCount";
+import Search from "./components/Search";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Basket from "./components/Basket";
+import BasketTotal from "./components/BasketTotal";
+import BasketCount from "./components/BasketCount";
 
 function App() {
   const [products, setProducts] = useState(data);
