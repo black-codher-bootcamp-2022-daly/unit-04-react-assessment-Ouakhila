@@ -15,11 +15,11 @@ import BasketCount from "./components/BasketCount";
 
 function App() {
   const [products, setProducts] = useState(data);
-  const [product, setBasket] = useState([]);
+  const [basket, setBasket] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [count, setCounter] = useState(0);
-  const [removeProduct, setRemoveProduct] = useState(product);
-  const [totalPrice, setTotal] = useState(product);
+  const [removeProduct, setRemoveProduct] = useState(basket);
+  const [totalPrice, setTotal] = useState(basket);
   const [message, setMessage] = useState(" ");
   useEffect(() => {
     console.log("useEffect");
@@ -29,27 +29,27 @@ function App() {
     // }
   }, [count]);
 
-  const total = product.reduce(
+  const total = basket.reduce(
     (accumulator, el) => accumulator + el.trackPrice,
     0
   );
 
   function addToBasket(id) {
-    const productToAdd = product;
+    const productToAdd = basket;
 
     productToAdd.push(id);
     setBasket(productToAdd);
     setCounter(count + 1);
     setTotal(total);
-    console.log({ productToAdd, product, total, totalPrice });
+    console.log({ productToAdd, basket, total, totalPrice });
   }
 
   function removeFromBasket(trackId) {
     const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
-    product.shift(trackId);
+    basket.shift(trackId);
     setRemoveProduct(newRemov);
     setCounter(count - 1);
-    console.log({ newRemov, product, total });
+    console.log({ newRemov, basket, total });
   }
 
   async function findProducts(value) {
@@ -99,7 +99,7 @@ function App() {
           element={
             <div>
               <BasketCount basketCount={count} />
-              <Basket basket={product} removeFromBasket={removeFromBasket} />
+              <Basket basket={basket} removeFromBasket={removeFromBasket} />
               <BasketTotal basketTotal={total} />
             </div>
           }
