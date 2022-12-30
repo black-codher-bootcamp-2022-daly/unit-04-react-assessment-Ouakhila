@@ -75,7 +75,7 @@ function App() {
                 <Search
                   keyword={keyword}
                   setKeyword={setKeyword}
-                  findProducts={findProducts}
+                  findProduct={findProducts}
                 ></Search>
                 {products.map((item) => (
                   <Product

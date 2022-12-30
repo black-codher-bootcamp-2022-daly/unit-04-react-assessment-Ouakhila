@@ -2,7 +2,7 @@ import React from "react";
 //import PropTypes from "prop-types";
 
 const Search = (props) => {
-  const { keyword, setKeyword, findProducts } = props;
+  const { keyword, setKeyword, findProduct } = props;
 
   function handleChange(e) {
     setKeyword(e.target.value);
@@ -11,7 +11,7 @@ const Search = (props) => {
 
   function onSubmit(event) {
     event.preventDefault();
-    findProducts(keyword);
+    findProduct(keyword);
   }
   return (
     <form className="Search">
