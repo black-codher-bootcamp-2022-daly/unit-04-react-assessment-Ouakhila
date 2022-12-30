@@ -3,17 +3,24 @@ import { Link } from "react-router-dom";
 function Header(props) {
   return (
     <div className="Nav-element">
-      <Link to="/" id="homelink" className="List">
-        Home
-      </Link>
+      <ul className="Nav-bar-list">
+        <li>
+          <Link to="/" id="homelink" className="List">
+            Home
+          </Link>
+        </li>
 
-      <Link to="/about" id="aboutlink" className="List">
-        About
-      </Link>
-
-      <Link to="/basket" id="basketlink" className="List">
-        Basket: {props.itemCount} items
-      </Link>
+        <li>
+          <Link to="/about" id="aboutlink" className="List">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="/basket" id="basketlink" className="List">
+            Basket: {props.itemCount} items
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 }
