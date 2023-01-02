@@ -16,7 +16,7 @@ import BasketCount from "./components/BasketCount";
 function App() {
   const [products, setProducts] = useState(data);
   const [basket, setBasket] = useState([]);
-  const [keyword, setKeyword] = useState("");
+  const [term, setTerm] = useState("");
   const [count, setCounter] = useState(0);
   const [removeProduct, setRemoveProduct] = useState(basket);
   const [totalPrice, setTotal] = useState(basket);
@@ -52,8 +52,8 @@ function App() {
     console.log({ newRemov, basket, total });
   }
 
-  async function findProducts(value) {
-    const url = `curl https://itunes.apple.com/search?term=orange&limit=30&explicit=no`;
+  async function search(value) {
+    const url = `https://itunes.apple.com/search?term=${value}&limit=30&explicit=no`;
 
     const results = await fetch(url).then((res) => res.json());
     if (!results.error) {
@@ -81,11 +81,7 @@ function App() {
     return (
       <>
         <ProductList addToBasket={addToBasket}>
-          <Search
-            keyword={keyword}
-            setKeyword={setKeyword}
-            findProduct={findProducts}
-          ></Search>
+          <Search term={term} setTerm={setTerm} search={search}></Search>
           {products.map((item) => (
             <Product
               key={item.trackId}
