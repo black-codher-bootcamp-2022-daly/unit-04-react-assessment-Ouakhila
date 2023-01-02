@@ -4,7 +4,7 @@ import data from "./models/data.json";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
 import { useState, useEffect } from "react";
-import { Routes, Route, Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./components/Search";
 import Header from "./components/Header";
 //import Home from "./pages/Home";
@@ -64,14 +64,14 @@ function App() {
   return (
     <div className="App">
       <h1>Media Store</h1>
-      <>
+      <Router>
         <Header itemCount={count}></Header>
 
         <Routes>
           <Route
             path="/"
             element={
-              <ProductList>
+              <ProductList addToBasket={addToBasket}>
                 <Search
                   keyword={keyword}
                   setKeyword={setKeyword}
@@ -98,13 +98,18 @@ function App() {
             element={
               <div>
                 <BasketCount basketCount={count} />
-                <Basket basket={basket} removeFromBasket={removeFromBasket} />
+                <Basket
+                  basket={basket}
+                  removeFromBasket={removeFromBasket}
+                  basketCount={count}
+                  basketTotal={total}
+                />
                 <BasketTotal basketTotal={total} />
               </div>
             }
           ></Route>
         </Routes>
-      </>
+      </Router>
     </div>
   );
 }
