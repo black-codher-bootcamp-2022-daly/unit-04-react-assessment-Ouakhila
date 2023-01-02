@@ -1,27 +1,27 @@
 import React from "react";
 //import PropTypes from "prop-types";
 
-export const Search = (props) => {
-  const { keyword, setKeyword, findProducts } = props;
+const Search = (props) => {
+  const { term, setTerm, search } = props;
 
   function handleChange(e) {
-    setKeyword(e.target.value);
+    setTerm(e.target.value);
     console.log(e);
   }
 
   function onSubmit(event) {
     event.preventDefault();
-    findProducts(keyword);
+    search(term);
   }
   return (
     <form className="Search">
       <p style={{ color: "black" }}>
-        <em>{keyword && "Keywords Typed: " + keyword}</em>
+        <em>{term && "Keywords Typed: " + term}</em>
       </p>
       <input
         className="Text-input"
         type="text"
-        value={keyword}
+        value={term}
         onChange={handleChange}
       />
 
@@ -31,3 +31,4 @@ export const Search = (props) => {
     </form>
   );
 };
+export default Search;

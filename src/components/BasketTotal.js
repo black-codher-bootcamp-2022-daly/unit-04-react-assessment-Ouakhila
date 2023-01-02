@@ -1,5 +1,7 @@
-export function BasketTotal(props) {
+function BasketTotal(props) {
   const { basketTotal } = props;
-  console.log(basketTotal);
-  return <div>Total:{props.basketTotal}</div>;
+  //console.log(basketTotal);
+  return <div>Total: {basketTotal} </div>;
 }
+
+export default BasketTotal;

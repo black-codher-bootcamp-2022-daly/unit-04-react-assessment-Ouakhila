@@ -1,17 +1,19 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Header from '../components/Header';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Header from "../components/Header";
 
 describe("Header functionality", () => {
-  test('Displays header', () => {
+  test("Displays header", () => {
     const count = 0;
-    render(<BrowserRouter>
-      <Route exact path="/" render={() => (
-        <Header basketCount={count} />
-      )} />
-    </BrowserRouter>);
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Header basketCount={count} />} />
+        </Routes>
+      </BrowserRouter>
+    );
     expect(document.querySelectorAll("a").length).toBeGreaterThanOrEqual(3);
   });
 });

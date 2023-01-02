@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function Header(props) {
+function Header(props) {
   return (
     <div className="Nav-element">
       <ul className="Nav-bar-list">
@@ -16,11 +16,12 @@ export function Header(props) {
           </Link>
         </li>
         <li>
-          <Link to="/basket/basketTotal" id="basketlink" className="List">
-            Basket {props.itemCount}
+          <Link to="/basket" id="basketlink" className="List">
+            Basket: {props.itemCount} items
           </Link>
         </li>
       </ul>
     </div>
   );
 }
+export default Header;
