@@ -71,21 +71,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
-          <Route
-            path="/basket"
-            element={
-              <div>
-                <BasketCount basketCount={count} />
-                <Basket
-                  basket={basket}
-                  removeFromBasket={removeFromBasket}
-                  basketCount={count}
-                  basketTotal={total}
-                />
-                <BasketTotal basketTotal={total} />
-              </div>
-            }
-          ></Route>
+          <Route path="/basket" element={<BasketProducts />}></Route>
         </Routes>
       </div>
     </Router>
@@ -114,6 +100,21 @@ function App() {
           ))}
         </ProductList>
       </>
+    );
+  }
+
+  function BasketProducts() {
+    return (
+      <div>
+        <BasketCount basketCount={count} />
+        <Basket
+          basket={basket}
+          removeFromBasket={removeFromBasket}
+          basketCount={count}
+          basketTotal={total}
+        />
+        <BasketTotal basketTotal={total} />
+      </div>
     );
   }
 }
