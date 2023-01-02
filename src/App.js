@@ -62,36 +62,14 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Media Store</h1>
-      <Router>
+    <Router>
+      <div className="App">
+        <h1>Media Store</h1>
+
         <Header itemCount={count}></Header>
 
         <Routes>
-          <Route
-            path="/"
-            element={
-              <ProductList addToBasket={addToBasket}>
-                <Search
-                  keyword={keyword}
-                  setKeyword={setKeyword}
-                  findProduct={findProducts}
-                ></Search>
-                {products.map((item) => (
-                  <Product
-                    key={item.trackId}
-                    kind={item.kind}
-                    id={item.trackId}
-                    name={item.trackName}
-                    thumbnail={item.artworkUrl100}
-                    currency={item.currency}
-                    price={item.trackPrice}
-                    onClick={() => addToBasket(item)}
-                  ></Product>
-                ))}
-              </ProductList>
-            }
-          ></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route
             path="/basket"
@@ -109,9 +87,35 @@ function App() {
             }
           ></Route>
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
+
+  function Home() {
+    return (
+      <>
+        <ProductList addToBasket={addToBasket}>
+          <Search
+            keyword={keyword}
+            setKeyword={setKeyword}
+            findProduct={findProducts}
+          ></Search>
+          {products.map((item) => (
+            <Product
+              key={item.trackId}
+              kind={item.kind}
+              id={item.trackId}
+              name={item.trackName}
+              thumbnail={item.artworkUrl100}
+              currency={item.currency}
+              price={item.trackPrice}
+              onClick={() => addToBasket(item)}
+            ></Product>
+          ))}
+        </ProductList>
+      </>
+    );
+  }
 }
 
 export default App;
