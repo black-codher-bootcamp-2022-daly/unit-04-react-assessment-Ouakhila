@@ -1,29 +1,38 @@
-function Product(props) {
+function Product({ item, ...props }) {
+  console.log({ props });
   const {
     trackId,
     kind,
-    name,
-    thumbnail,
-    price,
     trackName,
     currency,
-    removeFromBasket,
-  } = props;
+    trackPrice,
+    artworkUrl100,
+    isInTheBasket,
+    //artistId,
+    //key,
+  } = item;
 
   return (
     <div className="Product-div">
       <div>
         <h1>{kind}</h1>
-        <h2>{name}</h2>
+        <h2>{trackName}</h2>
         <h4>
           {currency}
-          {price}
+          {trackPrice}
         </h4>
       </div>
-      <img src={thumbnail} alt={trackName} />
-      <button onClick={() => props.onClick(trackId)}>
-        {removeFromBasket ? "Remove" : "Add"}
-      </button>
+      <img src={artworkUrl100} alt={trackName} />
+
+      <div>
+        {isInTheBasket ? (
+          <button onClick={() => props.removeFromBasket(trackId)}>
+            remove
+          </button>
+        ) : (
+          <button onClick={() => props.addToBasket(trackId)}>Add</button>
+        )}
+      </div>
     </div>
   );
 }

@@ -20,36 +20,48 @@ function App() {
   const [count, setCounter] = useState(0);
   const [removeProduct, setRemoveProduct] = useState(basket);
   const [totalPrice, setTotal] = useState(basket);
-  const [message, setMessage] = useState(" ");
-  useEffect(() => {
-    console.log("useEffect");
-    setMessage(() => "Sorry, no items in basket...");
-    // if ((count = 0)) {
-    //   return <h1>Sorry, no items in basket...</h1>;
-    // }
-  }, [count]);
+  //const [message, setMessage] = useState(" ");
+  // useEffect(() => {
+  //   console.log("useEffect");
+  //   setMessage(() => "Sorry, no items in basket...");
+  //   // if ((count = 0)) {
+  //   //   return <h1>Sorry, no items in basket...</h1>;
+  //   // }
+  // }, [count]);
 
-  const total = basket.reduce(
-    (accumulator, el) => accumulator + el.trackPrice,
-    0
-  );
+  // const total = basket.reduce(
+  //   (accumulator, el) => accumulator + el.trackPrice,
+  //   0
+  // );
 
-  function addToBasket(id) {
-    const productToAdd = basket;
+  function addToBasket(trackId) {
+    products.map((item) => {
+      if (item.trackId === trackId) {
+        console.log(item);
+        item.isInTheBasket = true;
+        setCounter(count + 1);
+        setBasket((prev) => [...prev, item]);
+      }
+    });
 
-    productToAdd.push(id);
-    setBasket(productToAdd);
-    setCounter(count + 1);
-    setTotal(total);
-    console.log({ productToAdd, basket, total, totalPrice });
+    // const productToAdd = basket;
+    // productToAdd.push(trackId);
+
+    // setBasket(productToAdd);
+    // setCounter(count + 1);
+    // //setTotal(total);
+    // console.log({ productToAdd });
   }
 
   function removeFromBasket(trackId) {
     const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
     basket.shift(trackId);
+    //products.push(trackId);
+    //products.trackId != true
+    //trackId.isInTheBasket !== true;
     setRemoveProduct(newRemov);
     setCounter(count - 1);
-    console.log({ newRemov, basket, total });
+    console.log({ newRemov, basket });
   }
 
   async function search(value) {
@@ -65,9 +77,7 @@ function App() {
     <Router>
       <div className="App">
         <h1>Media Store</h1>
-
         <Header itemCount={count}></Header>
-
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
@@ -80,37 +90,29 @@ function App() {
   function Home() {
     return (
       <>
-        <ProductList addToBasket={addToBasket}>
-          <Search term={term} setTerm={setTerm} search={search}></Search>
-          {products.map((item) => (
-            <Product
-              key={item.trackId}
-              kind={item.kind}
-              id={item.trackId}
-              name={item.trackName}
-              thumbnail={item.artworkUrl100}
-              currency={item.currency}
-              price={item.trackPrice}
-              onClick={() => addToBasket(item)}
-            ></Product>
-          ))}
-        </ProductList>
+        <Search term={term} setTerm={setTerm} search={search}></Search>
+        <ProductList
+          products={products}
+          addToBasket={addToBasket}
+          removeFromBasket={removeFromBasket}
+        ></ProductList>
       </>
     );
   }
 
   function BasketProducts() {
     return (
-      <div>
+      <>
         <BasketCount basketCount={count} />
         <Basket
           basket={basket}
           removeFromBasket={removeFromBasket}
           basketCount={count}
-          basketTotal={total}
+          addToBasket={addToBasket}
+          //basketTotal={total}
         />
-        <BasketTotal basketTotal={total} />
-      </div>
+        <BasketTotal />
+      </>
     );
   }
 }
