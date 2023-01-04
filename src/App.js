@@ -29,7 +29,7 @@ function App() {
   //   // }
   // }, [count]);
 
-  const total = basket.reduce(
+  const basketTotal = basket.reduce(
     (accumulator, el) => accumulator + el.trackPrice,
     0
   );
@@ -49,7 +49,7 @@ function App() {
 
     // setBasket(productToAdd);
     // setCounter(count + 1);
-    setTotal(total);
+    setTotal(basketTotal);
     // console.log({ productToAdd });
   }
 
@@ -120,9 +120,9 @@ function App() {
           basket={basket}
           removeFromBasket={removeFromBasket}
           basketCount={count}
-          basketTotal={total}
+          basketTotal={basketTotal}
         />
-        <BasketTotal basketTotal={total} />
+        <BasketTotal basketTotal={basketTotal} />
       </>
     );
   }
