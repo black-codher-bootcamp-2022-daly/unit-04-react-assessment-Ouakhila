@@ -1,4 +1,4 @@
-function Product({ item, ...props }) {
+function Product({ item, addToBasket, removeFromBasket, ...props }) {
   console.log({ props });
   const {
     trackId,
@@ -26,11 +26,9 @@ function Product({ item, ...props }) {
 
       <div>
         {isInTheBasket !== true ? (
-          <button onClick={() => props.addToBasket(trackId)}>Add</button>
+          <button onClick={() => addToBasket(trackId)}>Add</button>
         ) : (
-          <button onClick={() => props.removeFromBasket(trackId)}>
-            remove
-          </button>
+          <button onClick={() => removeFromBasket(trackId)}>remove</button>
         )}
       </div>
     </div>

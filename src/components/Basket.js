@@ -6,9 +6,11 @@ const Basket = ({ basket, removeFromBasket }) => {
 
   return (
     <div>
-      {basket ? (
+      {!basket || basket.length === 0 ? (
+        <h1>Sorry, no items in basket...</h1>
+      ) : (
         <div>
-          <h1> {basket.length}</h1>
+          {/* <h1> {basket.length}</h1> */}
           {basket.map((item) => (
             <Product
               item={item}
@@ -23,8 +25,6 @@ const Basket = ({ basket, removeFromBasket }) => {
             />
           ))}
         </div>
-      ) : (
-        <h1> No products yet</h1>
       )}
     </div>
   );
