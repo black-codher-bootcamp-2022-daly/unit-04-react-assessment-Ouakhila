@@ -8,7 +8,7 @@ function Product({ item, ...props }) {
     trackPrice,
     artworkUrl100,
     isInTheBasket,
-    //artistId,
+    artistId,
     //key,
   } = item;
 
@@ -25,12 +25,12 @@ function Product({ item, ...props }) {
       <img src={artworkUrl100} alt={trackName} />
 
       <div>
-        {isInTheBasket ? (
+        {isInTheBasket !== true ? (
+          <button onClick={() => props.addToBasket(trackId)}>Add</button>
+        ) : (
           <button onClick={() => props.removeFromBasket(trackId)}>
             remove
           </button>
-        ) : (
-          <button onClick={() => props.addToBasket(trackId)}>Add</button>
         )}
       </div>
     </div>

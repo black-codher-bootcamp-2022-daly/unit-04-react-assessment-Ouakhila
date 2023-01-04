@@ -14,7 +14,7 @@ import BasketTotal from "./components/BasketTotal";
 import BasketCount from "./components/BasketCount";
 
 function App() {
-  const [products, setProducts] = useState(data);
+  const [items, setProducts] = useState(data);
   const [basket, setBasket] = useState([]);
   const [term, setTerm] = useState("");
   const [count, setCounter] = useState(0);
@@ -29,13 +29,13 @@ function App() {
   //   // }
   // }, [count]);
 
-  // const total = basket.reduce(
-  //   (accumulator, el) => accumulator + el.trackPrice,
-  //   0
-  // );
+  const total = basket.reduce(
+    (accumulator, el) => accumulator + el.trackPrice,
+    0
+  );
 
   function addToBasket(trackId) {
-    products.map((item) => {
+    items.map((item) => {
       if (item.trackId === trackId) {
         console.log(item);
         item.isInTheBasket = true;
@@ -49,19 +49,35 @@ function App() {
 
     // setBasket(productToAdd);
     // setCounter(count + 1);
-    // //setTotal(total);
+    setTotal(total);
     // console.log({ productToAdd });
   }
 
   function removeFromBasket(trackId) {
-    const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
+    // const arr = [];
+    // basket.filter((item) => {
+    //   if (item.trackId && item.trackId !== trackId) {
+    //     //arr.shift(item.trackId);
+    //     arr.push(item);
+    //   }
+    //   item.isInTheBasket = false;
+    //   setBasket(arr);
+    //item.isInTheBasket = !item.isInTheBasket;
+    // });
+
+    const newRemov = removeProduct;
+    newRemov.filter((item) => {
+      if (item.trackId !== trackId) {
+        // if ((item.isInTheBasket = false)) {
+        basket.push(item);
+        // }
+      }
+      item.isInTheBasket = false;
+    });
     basket.shift(trackId);
-    //products.push(trackId);
-    //products.trackId != true
-    //trackId.isInTheBasket !== true;
     setRemoveProduct(newRemov);
     setCounter(count - 1);
-    console.log({ newRemov, basket });
+    // console.log({ newRemov, basket, total });
   }
 
   async function search(value) {
@@ -91,11 +107,7 @@ function App() {
     return (
       <>
         <Search term={term} setTerm={setTerm} search={search}></Search>
-        <ProductList
-          products={products}
-          addToBasket={addToBasket}
-          removeFromBasket={removeFromBasket}
-        ></ProductList>
+        <ProductList items={items} addToBasket={addToBasket}></ProductList>
       </>
     );
   }
@@ -108,10 +120,9 @@ function App() {
           basket={basket}
           removeFromBasket={removeFromBasket}
           basketCount={count}
-          addToBasket={addToBasket}
-          //basketTotal={total}
+          basketTotal={total}
         />
-        <BasketTotal />
+        <BasketTotal basketTotal={total} />
       </>
     );
   }

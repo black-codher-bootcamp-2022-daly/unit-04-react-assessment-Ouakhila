@@ -10,7 +10,6 @@ const Basket = ({ basket, removeFromBasket }) => {
         <div>
           <h1> {basket.length}</h1>
           {basket.map((item) => (
-            //console.log(el.trackId)
             <Product
               item={item}
               key={item.trackId}
@@ -20,9 +19,7 @@ const Basket = ({ basket, removeFromBasket }) => {
               currency={item.currency}
               price={item.trackPrice}
               isInTheBasket={true}
-              //addToBasket={props.addToBasket}
               removeFromBasket={removeFromBasket}
-              //onClick={() => removeFromBasket(props.trackId)}
             />
           ))}
         </div>
