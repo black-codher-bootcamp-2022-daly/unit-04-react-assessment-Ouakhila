@@ -38,7 +38,7 @@ function App() {
     items.map((item) => {
       if (item.trackId === trackId) {
         console.log(item);
-        item.isInTheBasket = true;
+        item.inBasket = true;
         setCounter(count + 1);
         setBasket((prev) => [...prev, item]);
       }
@@ -72,7 +72,7 @@ function App() {
         basket.push(item);
         // }
       }
-      item.isInTheBasket = false;
+      item.inBasket = false;
     });
     basket.shift(trackId);
     setRemoveProduct(newRemov);
@@ -107,7 +107,11 @@ function App() {
     return (
       <>
         <Search term={term} setTerm={setTerm} search={search}></Search>
-        <ProductList items={items} addToBasket={addToBasket}></ProductList>
+        <ProductList
+          items={items}
+          addToBasket={addToBasket}
+          removeFromBasket={removeFromBasket}
+        ></ProductList>
       </>
     );
   }

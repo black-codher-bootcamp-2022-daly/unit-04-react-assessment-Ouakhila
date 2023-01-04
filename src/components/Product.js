@@ -7,7 +7,7 @@ function Product({ item, addToBasket, removeFromBasket, ...props }) {
     currency,
     trackPrice,
     artworkUrl100,
-    isInTheBasket,
+    inBasket,
     artistId,
     //key,
   } = item;
@@ -25,7 +25,7 @@ function Product({ item, addToBasket, removeFromBasket, ...props }) {
       <img src={artworkUrl100} alt={trackName} />
 
       <div>
-        {isInTheBasket !== true ? (
+        {inBasket !== true ? (
           <button onClick={() => addToBasket(trackId)}>Add</button>
         ) : (
           <button onClick={() => removeFromBasket(trackId)}>remove</button>
