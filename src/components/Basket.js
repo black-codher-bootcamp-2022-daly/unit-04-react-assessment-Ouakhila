@@ -2,17 +2,18 @@ import React from "react";
 import Product from "./Product";
 import BasketCount from "./BasketCount";
 
-const Basket = ({ basket, removeFromBasket, inBasket, basketCount }) => {
+const Basket = ({ basket, ...props }) => {
+  const { removeFromBasket, basketCount } = props;
   console.log(basket);
 
   return (
-    <div>
+    <>
+      <h1>Basket</h1>
       <BasketCount basketCount={basketCount} />
       {!basket || basket.length === 0 ? (
         <h1 className="empty">Sorry, no items in basket...</h1>
       ) : (
-        <div>
-          {/* <h1> {basket.length}</h1> */}
+        <div className="product">
           {basket.map((item) => (
             <Product
               item={item}
@@ -28,7 +29,7 @@ const Basket = ({ basket, removeFromBasket, inBasket, basketCount }) => {
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 export default Basket;
