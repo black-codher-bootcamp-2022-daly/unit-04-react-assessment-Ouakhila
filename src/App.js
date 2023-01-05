@@ -64,26 +64,17 @@ function App() {
   }
 
   function removeFromBasket(trackId) {
-    // const arr = [];
-    // basket.filter((item) => {
-    //   if (item.trackId && item.trackId !== trackId) {
-    //     //arr.shift(item.trackId);
-    //     arr.push(item);
-    //   }
-    //   item.isInTheBasket = false;
-    //   setBasket(arr);
-    //item.isInTheBasket = !item.isInTheBasket;
-    // });
-
-    const newRemov = removeProduct;
-    newRemov.filter((item) => {
+    const newRemov = [];
+    basket.filter((item) => {
       if (item.trackId !== trackId) {
-        basket.push(item);
+        newRemov.push(item);
+      } else {
+        item.inBasket = !item.inBasket;
       }
-      item.inBasket = false;
+      console.log(newRemov);
     });
-    basket.shift(trackId);
-    setRemoveProduct(newRemov);
+
+    setBasket(newRemov);
     setCounter(count - 1);
   }
 

@@ -3,7 +3,7 @@ import Product from "./Product";
 //import { useState, useEffect } from "react";
 
 function ProductList(props) {
-  console.log(props.items);
+  // console.log(props.items);
   return (
     <main>
       <h1 className="title"> Suggested for you </h1>{" "}
