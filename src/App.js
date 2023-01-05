@@ -111,7 +111,8 @@ function App() {
           items={items}
           addToBasket={addToBasket}
           removeFromBasket={removeFromBasket}
-        ></ProductList>
+          itemCount={data.length}
+        />
       </>
     );
   }

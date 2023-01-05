@@ -8,7 +8,7 @@ function ProductList(props) {
     <main>
       <h1> Suggested for you </h1>{" "}
       {!props.items || props.items.length === 0 ? (
-        <h1>No items found</h1>
+        <h1>No items found...</h1>
       ) : (
         props.items.map((item) => (
           <Product
