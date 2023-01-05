@@ -1,9 +1,9 @@
 import { Route } from "react-router-dom";
 
-function About() {
+function About(props) {
   return (
     <div>
-      <h1>Welcome</h1>
+      <h1>Welcome {props.itemCount} </h1>
     </div>
   );
 }

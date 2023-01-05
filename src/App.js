@@ -43,14 +43,7 @@ function App() {
         setBasket((prev) => [...prev, item]);
       }
     });
-
-    // const productToAdd = basket;
-    // productToAdd.push(trackId);
-
-    // setBasket(productToAdd);
-    // setCounter(count + 1);
     setTotal(basketTotal);
-    // console.log({ productToAdd });
   }
 
   function removeFromBasket(trackId) {
@@ -68,16 +61,13 @@ function App() {
     const newRemov = removeProduct;
     newRemov.filter((item) => {
       if (item.trackId !== trackId) {
-        // if ((item.isInTheBasket = false)) {
         basket.push(item);
-        // }
       }
       item.inBasket = false;
     });
     basket.shift(trackId);
     setRemoveProduct(newRemov);
     setCounter(count - 1);
-    // console.log({ newRemov, basket, total });
   }
 
   async function search(value) {
@@ -107,6 +97,7 @@ function App() {
     return (
       <>
         <Search term={term} setTerm={setTerm} search={search}></Search>
+        {items.length === 0 && "Sorry, no items in basket..."}
         <ProductList
           items={items}
           addToBasket={addToBasket}
