@@ -1,5 +1,6 @@
 import "./styles/App.css";
 import React from "react";
+//import ReactPaginate from "react-paginate";
 import data from "./models/data.json";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
@@ -7,11 +8,11 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./components/Search";
 import Header from "./components/Header";
-//import Home from "./pages/Home";
 import About from "./pages/About";
 import Basket from "./components/Basket";
 import BasketTotal from "./components/BasketTotal";
 import BasketCount from "./components/BasketCount";
+import Paginate from "./components/Paginate";
 
 function App() {
   const [items, setProducts] = useState(data);
@@ -20,14 +21,30 @@ function App() {
   const [count, setCounter] = useState(0);
   const [removeProduct, setRemoveProduct] = useState(basket);
   const [totalPrice, setTotal] = useState(basket);
-  //const [message, setMessage] = useState(" ");
-  // useEffect(() => {
-  //   console.log("useEffect");
-  //   setMessage(() => "Sorry, no items in basket...");
-  //   // if ((count = 0)) {
-  //   //   return <h1>Sorry, no items in basket...</h1>;
-  //   // }
-  // }, [count]);
+
+  const [productsPost, setProductsPost] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(15);
+
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const currentPosts = productsPost.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const previousPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage !== Math.ceil(productsPost.length / postPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   const basketTotal = basket.reduce(
     (accumulator, el) => accumulator + el.trackPrice,
@@ -82,7 +99,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>Media Store</h1>
+        <h1 className="Media">Media Store</h1>
         <Header itemCount={count}></Header>
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -97,13 +114,26 @@ function App() {
     return (
       <>
         <Search term={term} setTerm={setTerm} search={search}></Search>
+        {productsPost ? (
+          <div className="product-content-section">
+            <Paginate
+              postPerPage={postPerPage}
+              totalPosts={productsPost.length}
+              paginate={paginate}
+              previousPage={previousPage}
+              nextPage={nextPage}
+            />
+            <ProductList
+              items={items}
+              addToBasket={addToBasket}
+              removeFromBasket={removeFromBasket}
+              itemCount={data.length}
+            />
+          </div>
+        ) : (
+          <div>Loading....</div>
+        )}
         {items.length === 0 && "Sorry, no items in basket..."}
-        <ProductList
-          items={items}
-          addToBasket={addToBasket}
-          removeFromBasket={removeFromBasket}
-          itemCount={data.length}
-        />
       </>
     );
   }

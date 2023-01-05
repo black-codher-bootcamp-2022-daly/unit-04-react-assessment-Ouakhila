@@ -8,9 +8,6 @@ const Basket = ({ basket, ...props }) => {
 
   return (
     <>
-      <h1>Basket</h1>
-      <BasketCount basketCount={basketCount} />
-
       {!basket || basket.length === 0 ? (
         <div className="empty">Sorry, no items in basket...</div>
       ) : (
