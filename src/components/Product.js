@@ -1,5 +1,5 @@
 function Product({ item, addToBasket, removeFromBasket, ...props }) {
-  console.log({ props });
+  //console.log({ props });
   const {
     trackId,
     kind,
@@ -8,7 +8,7 @@ function Product({ item, addToBasket, removeFromBasket, ...props }) {
     trackPrice,
     artworkUrl100,
     inBasket,
-    artistId,
+    //artistId,
     //key,
   } = item;
 
