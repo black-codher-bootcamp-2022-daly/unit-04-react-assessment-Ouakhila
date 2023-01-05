@@ -1,3 +1,4 @@
+import React from "react";
 function BasketTotal(props) {
   const { basketTotal } = props;
   //console.log(basketTotal);
