@@ -111,14 +111,15 @@ function App() {
   function BasketProducts() {
     return (
       <>
-        <BasketCount basketCount={count} />
-        <Basket
-          basket={basket}
-          removeFromBasket={removeFromBasket}
-          basketCount={count}
-          basketTotal={basketTotal}
-          // basketCount={items.length}
-        />
+        <BasketCount basketCount={basket.length} />
+        {
+          <Basket
+            basket={basket}
+            removeFromBasket={removeFromBasket}
+            basketCount={count}
+            basketTotal={basketTotal}
+          />
+        }
         <BasketTotal basketTotal={basketTotal} />
       </>
     );
