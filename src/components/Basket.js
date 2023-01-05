@@ -7,7 +7,7 @@ const Basket = ({ basket, removeFromBasket }) => {
   return (
     <div>
       {!basket || basket.length === 0 ? (
-        <h1>Sorry, no items in basket...</h1>
+        <h1 className="empty">Sorry, no items in basket...</h1>
       ) : (
         <div>
           {/* <h1> {basket.length}</h1> */}
