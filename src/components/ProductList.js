@@ -6,7 +6,7 @@ function ProductList(props) {
   console.log(props.items);
   return (
     <main>
-      <h1> Suggested for you </h1>{" "}
+      <h1 className="title"> Suggested for you </h1>{" "}
       {!props.items || props.items.length === 0 ? (
         <div className="empty"> No items found...</div>
       ) : (

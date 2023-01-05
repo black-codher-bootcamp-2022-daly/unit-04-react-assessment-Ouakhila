@@ -82,7 +82,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>Media Store</h1>
+        <h1 className="Media">Media Store</h1>
         <Header itemCount={count}></Header>
         <Routes>
           <Route path="/" element={<Home />}></Route>

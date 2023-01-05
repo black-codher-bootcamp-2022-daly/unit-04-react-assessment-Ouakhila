@@ -4,14 +4,87 @@
 
 .App-header {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   font-size: calc(10px + 2vmin);
 }
 
 .App-link {
-  color: #ca61fb;
+  color: black;
 }
 
+.Nav-bar-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px 20px;
+  list-style-type: none;
+  font-family: lato;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  color: black;
+ 
+ 
+}
+
+.List {
+  float: center;
+  text-decoration: none;
+}
+
+.Text-input {
+  padding: 5px 300px; 
+}
+
+.Button-submit {
+  padding: 5px 20px;
+  
+}
+
+.product {
+  padding-left: 25%;
+padding-right: 25%;
+text-align: justify;
+
+}
+
+.Product-div {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+
+}
+img {
+  padding: 10%;
+  padding-left: 30px;
+  padding-top: 10px;
+  
+}
+
+.title {
+ text-align: justify;
+ padding-left: 25%;
+ padding-top: 40px;
+}
+
+button {
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  /* //padding: 65%; */
+}
+
+.Media {
+  text-align: center;
+}
+.Text-input {
+  margin-left: 27%;
+  padding-left: 20%;
+  padding-right: 10%;
+  padding-bottom: 10px;
+}
