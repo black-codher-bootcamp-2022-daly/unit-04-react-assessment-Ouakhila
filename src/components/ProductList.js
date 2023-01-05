@@ -8,25 +8,25 @@ function ProductList(props) {
     <main>
       <h1> Suggested for you </h1>{" "}
       {!props.items || props.items.length === 0 ? (
-        <h1 className="empty">No items found...</h1>
+        <div className="empty"> No items found...</div>
       ) : (
         props.items.map((item) => (
-          <Product
-            key={item.trackId}
-            item={item}
-            kind={item.kind}
-            id={item.trackId}
-            name={item.trackName}
-            thumbnail={item.artworkUrl100}
-            currency={item.currency}
-            price={item.trackPrice}
-            addToBasket={props.addToBasket}
-            removeFromBasket={props.removeFromBasket}
-          />
+          <div className="product" key={item.trackId}>
+            <Product
+              key={item.trackId}
+              item={item}
+              kind={item.kind}
+              id={item.trackId}
+              name={item.trackName}
+              thumbnail={item.artworkUrl100}
+              currency={item.currency}
+              price={item.trackPrice}
+              addToBasket={props.addToBasket}
+              removeFromBasket={props.removeFromBasket}
+            />
+          </div>
         ))
       )}
-      {/* {props.children} */}
-      {/* {props.books.map((item) => (<Book title={item.volumeInfo.title} subtitle={item.volumeInfo.subtitle} authors={item.volumeInfo.authors} selflink={item.selfLink}></Book>))} */}
     </main>
   );
 }
