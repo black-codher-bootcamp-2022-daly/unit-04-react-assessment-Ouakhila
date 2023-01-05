@@ -117,6 +117,7 @@ function App() {
           removeFromBasket={removeFromBasket}
           basketCount={count}
           basketTotal={basketTotal}
+          // basketCount={items.length}
         />
         <BasketTotal basketTotal={basketTotal} />
       </>

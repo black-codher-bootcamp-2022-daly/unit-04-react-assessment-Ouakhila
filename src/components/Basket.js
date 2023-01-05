@@ -1,11 +1,13 @@
 import React from "react";
 import Product from "./Product";
+import BasketCount from "./BasketCount";
 
-const Basket = ({ basket, removeFromBasket }) => {
+const Basket = ({ basket, removeFromBasket, inBasket, basketCount }) => {
   console.log(basket);
 
   return (
     <div>
+      <BasketCount basketCount={basketCount} />
       {!basket || basket.length === 0 ? (
         <h1 className="empty">Sorry, no items in basket...</h1>
       ) : (
@@ -20,7 +22,7 @@ const Basket = ({ basket, removeFromBasket }) => {
               thumbnail={item.artworkUrl100}
               currency={item.currency}
               price={item.trackPrice}
-              isInTheBasket={true}
+              inBasket={item.inBasket}
               removeFromBasket={removeFromBasket}
             />
           ))}
