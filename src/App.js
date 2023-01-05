@@ -14,42 +14,70 @@ import BasketTotal from "./components/BasketTotal";
 import BasketCount from "./components/BasketCount";
 
 function App() {
-  const [products, setProducts] = useState(data);
+  const [items, setProducts] = useState(data);
   const [basket, setBasket] = useState([]);
   const [term, setTerm] = useState("");
   const [count, setCounter] = useState(0);
   const [removeProduct, setRemoveProduct] = useState(basket);
   const [totalPrice, setTotal] = useState(basket);
-  const [message, setMessage] = useState(" ");
-  useEffect(() => {
-    console.log("useEffect");
-    setMessage(() => "Sorry, no items in basket...");
-    // if ((count = 0)) {
-    //   return <h1>Sorry, no items in basket...</h1>;
-    // }
-  }, [count]);
+  //const [message, setMessage] = useState(" ");
+  // useEffect(() => {
+  //   console.log("useEffect");
+  //   setMessage(() => "Sorry, no items in basket...");
+  //   // if ((count = 0)) {
+  //   //   return <h1>Sorry, no items in basket...</h1>;
+  //   // }
+  // }, [count]);
 
-  const total = basket.reduce(
+  const basketTotal = basket.reduce(
     (accumulator, el) => accumulator + el.trackPrice,
     0
   );
 
-  function addToBasket(id) {
-    const productToAdd = basket;
+  function addToBasket(trackId) {
+    items.map((item) => {
+      if (item.trackId === trackId) {
+        console.log(item);
+        item.inBasket = true;
+        setCounter(count + 1);
+        setBasket((prev) => [...prev, item]);
+      }
+    });
 
-    productToAdd.push(id);
-    setBasket(productToAdd);
-    setCounter(count + 1);
-    setTotal(total);
-    console.log({ productToAdd, basket, total, totalPrice });
+    // const productToAdd = basket;
+    // productToAdd.push(trackId);
+
+    // setBasket(productToAdd);
+    // setCounter(count + 1);
+    setTotal(basketTotal);
+    // console.log({ productToAdd });
   }
 
   function removeFromBasket(trackId) {
-    const newRemov = removeProduct.filter((item) => item.trackId !== trackId);
+    // const arr = [];
+    // basket.filter((item) => {
+    //   if (item.trackId && item.trackId !== trackId) {
+    //     //arr.shift(item.trackId);
+    //     arr.push(item);
+    //   }
+    //   item.isInTheBasket = false;
+    //   setBasket(arr);
+    //item.isInTheBasket = !item.isInTheBasket;
+    // });
+
+    const newRemov = removeProduct;
+    newRemov.filter((item) => {
+      if (item.trackId !== trackId) {
+        // if ((item.isInTheBasket = false)) {
+        basket.push(item);
+        // }
+      }
+      item.inBasket = false;
+    });
     basket.shift(trackId);
     setRemoveProduct(newRemov);
     setCounter(count - 1);
-    console.log({ newRemov, basket, total });
+    // console.log({ newRemov, basket, total });
   }
 
   async function search(value) {
@@ -65,9 +93,7 @@ function App() {
     <Router>
       <div className="App">
         <h1>Media Store</h1>
-
         <Header itemCount={count}></Header>
-
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
@@ -80,37 +106,29 @@ function App() {
   function Home() {
     return (
       <>
-        <ProductList addToBasket={addToBasket}>
-          <Search term={term} setTerm={setTerm} search={search}></Search>
-          {products.map((item) => (
-            <Product
-              key={item.trackId}
-              kind={item.kind}
-              id={item.trackId}
-              name={item.trackName}
-              thumbnail={item.artworkUrl100}
-              currency={item.currency}
-              price={item.trackPrice}
-              onClick={() => addToBasket(item)}
-            ></Product>
-          ))}
-        </ProductList>
+        <Search term={term} setTerm={setTerm} search={search}></Search>
+        <ProductList
+          items={items}
+          addToBasket={addToBasket}
+          removeFromBasket={removeFromBasket}
+          itemCount={data.length}
+        />
       </>
     );
   }
 
   function BasketProducts() {
     return (
-      <div>
+      <>
         <BasketCount basketCount={count} />
         <Basket
           basket={basket}
           removeFromBasket={removeFromBasket}
           basketCount={count}
-          basketTotal={total}
+          basketTotal={basketTotal}
         />
-        <BasketTotal basketTotal={total} />
-      </div>
+        <BasketTotal basketTotal={basketTotal} />
+      </>
     );
   }
 }

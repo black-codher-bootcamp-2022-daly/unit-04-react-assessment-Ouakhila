@@ -1,23 +1,31 @@
+import React from "react";
 import Product from "./Product";
-//import { BasketTotal } from "./BasketTotal";
-//import { toContainHTML } from "@testing-library/jest-dom/dist/matchers";
 
 const Basket = ({ basket, removeFromBasket }) => {
+  console.log(basket);
+
   return (
     <div>
-      {basket.map((el) => (
-        <Product
-          key={el.trackId}
-          kind={el.kind}
-          id={el.trackId}
-          name={el.trackName}
-          thumbnail={el.artworkUrl100}
-          currency={el.currency}
-          price={el.trackPrice}
-          removeFromBasket={true}
-          onClick={() => removeFromBasket(el.trackId)}
-        />
-      ))}
+      {!basket || basket.length === 0 ? (
+        <h1>Sorry, no items in basket...</h1>
+      ) : (
+        <div>
+          {/* <h1> {basket.length}</h1> */}
+          {basket.map((item) => (
+            <Product
+              item={item}
+              key={item.trackId}
+              kind={item.kind}
+              name={item.trackName}
+              thumbnail={item.artworkUrl100}
+              currency={item.currency}
+              price={item.trackPrice}
+              isInTheBasket={true}
+              removeFromBasket={removeFromBasket}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
