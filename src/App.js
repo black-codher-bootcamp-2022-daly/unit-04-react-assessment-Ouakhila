@@ -19,16 +19,16 @@ function App() {
   const [basket, setBasket] = useState([]);
   const [term, setTerm] = useState("");
   const [count, setCounter] = useState(0);
-  const [removeProduct, setRemoveProduct] = useState(basket);
+  //const [removeProduct, setRemoveProduct] = useState(basket);
   const [totalPrice, setTotal] = useState(basket);
 
   const [productsPost, setProductsPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(15);
+  const [postPerPage] = useState(10);
 
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
-  const currentPosts = productsPost.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -83,7 +83,7 @@ function App() {
 
     const results = await fetch(url).then((res) => res.json());
     if (!results.error) {
-      setProducts(results.items);
+      setProducts(results.results);
     }
   }
 
@@ -115,7 +115,7 @@ function App() {
               nextPage={nextPage}
             />
             <ProductList
-              items={items}
+              items={currentPosts}
               addToBasket={addToBasket}
               removeFromBasket={removeFromBasket}
               itemCount={data.length}
@@ -141,7 +141,9 @@ function App() {
             basketTotal={basketTotal}
           />
         }
-        <BasketTotal basketTotal={basketTotal} />
+        <div className="total-price">
+          Total Price <BasketTotal basketTotal={basketTotal} />
+        </div>
       </>
     );
   }

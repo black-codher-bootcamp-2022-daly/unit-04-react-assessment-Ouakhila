@@ -1,8 +1,8 @@
 function BasketCount(props) {
   console.log(props.basketCount);
   return (
-    <div>
-      <h1>Basket</h1>
+    <div className="counts">
+      <h1 className="items-basket">Basket</h1>
       {props.basketCount} items
     </div>
   );
