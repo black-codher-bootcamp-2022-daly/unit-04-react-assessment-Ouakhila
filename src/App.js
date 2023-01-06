@@ -2,9 +2,8 @@ import "./styles/App.css";
 import React from "react";
 //import ReactPaginate from "react-paginate";
 import data from "./models/data.json";
-import Product from "./components/Product";
 import ProductList from "./components/ProductList";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./components/Search";
 import Header from "./components/Header";
@@ -20,9 +19,9 @@ function App() {
   const [term, setTerm] = useState("");
   const [count, setCounter] = useState(0);
   //const [removeProduct, setRemoveProduct] = useState(basket);
-  const [totalPrice, setTotal] = useState(basket);
+  const [setTotal] = useState(basket);
 
-  const [productsPost, setProductsPost] = useState([]);
+  const [productsPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
 
@@ -59,6 +58,7 @@ function App() {
         setCounter(count + 1);
         setBasket((prev) => [...prev, item]);
       }
+      return item;
     });
     setTotal(basketTotal);
   }
@@ -71,7 +71,8 @@ function App() {
       } else {
         item.inBasket = !item.inBasket;
       }
-      console.log(newRemov);
+      return item;
+      //console.log(newRemov);
     });
 
     setBasket(newRemov);
