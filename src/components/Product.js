@@ -1,4 +1,4 @@
-function Product({ item, addToBasket, removeFromBasket, ...props }) {
+function Product({ item, addToBasket, removeFromBasket }) {
   //console.log({ props });
   const {
     trackId,

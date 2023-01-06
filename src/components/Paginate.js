@@ -11,7 +11,7 @@ const Paginate = ({ postsPerPage, totalPosts, nextPage, previousPage }) => {
     <div className="pag-container">
       <ul className="pagination">
         <li onClick={previousPage} className="page-number">
-          Previous
+          ...Previous
         </li>
         {pageNumbers.map((number) => (
           <li
@@ -22,8 +22,8 @@ const Paginate = ({ postsPerPage, totalPosts, nextPage, previousPage }) => {
             {number}
           </li>
         ))}
-        <li onClick={nextPage} className="page-Number">
-          Next
+        <li onClick={nextPage} className="page-number">
+          Next...
         </li>
       </ul>
     </div>

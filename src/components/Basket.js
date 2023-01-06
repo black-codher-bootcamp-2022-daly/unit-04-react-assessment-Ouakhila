@@ -3,7 +3,7 @@ import Product from "./Product";
 import BasketCount from "./BasketCount";
 
 const Basket = ({ basket, ...props }) => {
-  const { removeFromBasket, basketCount } = props;
+  const { removeFromBasket } = props;
   console.log(basket);
 
   return (
