@@ -14,7 +14,8 @@ function Product({ item, addToBasket, removeFromBasket }) {
 
   return (
     <div className="Product-div">
-      <div>
+      <img src={artworkUrl100} alt={trackName} />
+      <div className="List-element">
         <h1>{kind}</h1>
         <h2>{trackName}</h2>
         <h4>
@@ -22,13 +23,14 @@ function Product({ item, addToBasket, removeFromBasket }) {
           {trackPrice}
         </h4>
       </div>
-      <img src={artworkUrl100} alt={trackName} />
 
       <div>
         {inBasket !== true ? (
-          <button onClick={() => addToBasket(trackId)}>Add</button>
+          <button onClick={() => addToBasket(trackId)}>Add to basket</button>
         ) : (
-          <button onClick={() => removeFromBasket(trackId)}>remove</button>
+          <button onClick={() => removeFromBasket(trackId)}>
+            remove from basket
+          </button>
         )}
       </div>
     </div>
