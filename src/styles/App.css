@@ -1,10 +1,19 @@
-.App {
+/*Lato font*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+/*Urbanist font*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+
+
+
+.App {
+  background-color:rgb(232, 171, 232);
 }
 
-.App-header {
-  min-height: 100vh;
-  font-size: calc(10px + 2vmin);
+.HeadImage {
+  width: 100%;
+  height: 400px;
+  padding-left: 0px;
 }
 
 .App-link {
@@ -23,7 +32,7 @@
   padding: 0;
   padding-top: 10px;
   color: black;
- 
+ font-family: Lato;
  
 }
 
@@ -31,18 +40,21 @@
   float: center;
   text-decoration: none;
   color: black;
+  font-family: Lato;
 }
 
 .List:hover{
-  color: darkcyan;
+  color:  rgb(208, 74, 74);
 }
 
 .Text-input {
   padding: 5px 300px; 
+  font-family: Lato;
 }
 
 .Button-submit {
   padding: 5px 20px;
+  font-family: Lato;
   
 }
 
@@ -52,18 +64,69 @@ padding-right: 25%;
 text-align: justify;
 
 }
-
-.Product-div {
+/* 
+.List-element{
   display: flex;
   flex-direction:row;
   justify-content: space-around;
   border: 1px solid #999;
 
+} */
+
+.Product-div{
+  display: grid;
+  grid-template-columns: 400px 350px 100px;
+  grid-template-rows: 80px 50px 40px; 
+  column-gap: 15px;
+  row-gap: 20px;
+  border: 3px solid rgb(232, 171, 232);
+  background-color: rgb(240, 206, 240);
+ 
+
 }
+
+@media (max-width:860px) {
+
+  .Product-div{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    grid-template-rows: 80px 50px 40px; 
+    column-gap: 15px;
+    row-gap: 20px;
+    border: 3px solid rgb(232, 171, 232);
+    background-color: rgb(240, 206, 240);
+   
+  
+  }
+}
+
+@media (max-width:900px) {
+
+  .Product-div{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    grid-template-rows: 80px 50px 40px; 
+    column-gap: 15px;
+    row-gap: 20px;
+    border: 3px solid rgb(232, 171, 232);
+    background-color: rgb(240, 206, 240);
+   
+  
+  }
+}
+
+
+
 img {
-  padding: 10%;
+  display: flex;
+  flex-basis: 40%;
+  float: inline-start;
+  margin-right: 5px;
+  height: 150px;  
+  width: 150px;  
   padding-left: 30px;
   padding-top: 10px;
+  
   
 }
 
@@ -71,6 +134,7 @@ img {
  text-align: justify;
  padding-left: 27%;
  padding-top: 40px;
+ font-family: Lato;
 }
 
 button {
@@ -78,21 +142,23 @@ button {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 40px;
-  background-color:darkcyan;
+  background-color:rgb(97, 4, 70);
   color:  white;
   border-radius: 10%;
   cursor:pointer;
 }
 
 button:active{
- background-color: red;
+ background-color: rgb(208, 74, 74);
 }
 button:hover{
-  background-color: red;
+  background-color: rgb(208, 74, 74);
 }
 
 .Media {
+  padding-top: 20px;
   text-align: center;
+  font-family: Lato;
 }
 .Text-input {
   margin-left: 27%;
@@ -109,9 +175,10 @@ button:hover{
   font-weight: bold;
   font-size: 20px;
   cursor: pointer;
+  font-family: Lato;
 }
 .page-number:hover {
-  color:darkcyan;
+  color:rgb(208, 74, 74);
 }
 
 .empty, .counts, .items-basket {
@@ -119,10 +186,13 @@ button:hover{
 }
 
 .total-price{
-  border: 1px solid #999;
-  background-color:#999;
+  border: 1px solid rgb(237, 164, 198);
+  background-color:rgb(187, 34, 187);
   text-align: center;
   font-weight: bold;
+  font-family: Lato;
+  color: white;
+
   
 }
 
@@ -130,5 +200,23 @@ button:hover{
   text-align: center;
   text-align: justify;
   padding-left: 30%;
+  font-family: Lato;
+}
+.typed {
+  text-align: center;
+  font-weight: bold;
+  font-family: Lato;
 }
 
+.List-element {
+  font-family: Lato;
+  overflow-wrap: break-word;
+  inline-size: 200px;
+ 
+
+}
+
+.pages {
+  text-align: center;
+  
+}

@@ -15,7 +15,7 @@ const Search = (props) => {
   }
   return (
     <form className="Search">
-      <p style={{ color: "black" }}>
+      <p style={{ color: "black" }} className="typed">
         <em>{term && "Keywords Typed: " + term}</em>
       </p>
       <input

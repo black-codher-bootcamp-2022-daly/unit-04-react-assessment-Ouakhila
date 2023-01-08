@@ -93,6 +93,7 @@ function App() {
       <div className="App">
         <h1 className="Media">Media Store</h1>
         <Header itemCount={count}></Header>
+        <img src="img.jpg" alt="imag" className="HeadImage" />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
