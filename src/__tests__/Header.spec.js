@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -14,6 +14,7 @@ describe("Header functionality", () => {
         </Routes>
       </BrowserRouter>
     );
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll("a").length).toBeGreaterThanOrEqual(3);
   });
 });

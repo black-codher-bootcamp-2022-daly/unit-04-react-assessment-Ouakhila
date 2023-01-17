@@ -89,10 +89,10 @@ Your app should display the results of the search in an component called `<Produ
 
 ### `Basket.js`
 
-Users should be able to navigate to their `<Basket/>` and view all saved items. When their `<Basket/>` is empty a message should be displayed:
+Users should be able to navigate to their `<Basket/>` and view all saved items. When their `<Basket/>` is empty a message should be displayed in an element with the `empty` class attribute set, that includes the phrase:
 
 ```
-"Sorry, no items in basket"
+"No items found"
 ```
 
 Users should be able to add items returned in the results from the iTunes Search API and items in the `data.json` to their `<Basket/>` component.
@@ -149,7 +149,7 @@ To navigate to the routes above, your `<Header/>` file should contain the follow
 
 ## `Product.js`
 
-Expected **props** for the `<Product/>` component are listed below:
+The component should render in an element with the `product` class attribute set. Expected **props** for the `<Product/>` component are listed below:
 
 ### Props
 
@@ -168,10 +168,10 @@ Example expected props. Please note this is not an exhaustive list, but the mini
 
 ## `ProductList.js`
 
-When the `<ProductList/>` is empty a message should be displayed:
+When the `<ProductList/>` is empty a message should be displayed in an element with the `empty` class attribute set, that includes the phrase:
 
 ```
-"No items found..."
+"No items found"
 ```
 
 Expected **props** for the `<ProductList/>` component are listed below:

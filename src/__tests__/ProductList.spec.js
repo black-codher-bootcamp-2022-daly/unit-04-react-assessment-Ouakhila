@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ProductList from "../components/ProductList";
 import data from "../models/data.json";
@@ -15,14 +15,16 @@ describe("ProductList functionality", () => {
         itemCount={data.length}
       />
     );
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll(".product").length).toBe(expectedLength);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll(".empty").length).toBe(0);
   });
 
   test("Displays empty product list", () => {
     const emptyData = [];
     const expectedLength = emptyData.length;
-    const { getByText } = render(
+    render(
       <ProductList
         items={emptyData}
         addToBasket={null}
@@ -30,8 +32,12 @@ describe("ProductList functionality", () => {
         itemCount={emptyData.length}
       />
     );
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll(".product").length).toBe(expectedLength);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll(".empty").length).toBe(1);
-    expect(getByText("No items found...")).toBeInTheDocument();
+    expect(
+      screen.getByText("No items found", { exact: false })
+    ).toBeInTheDocument();
   });
 });
