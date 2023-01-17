@@ -1,0 +1,222 @@
+/*Lato font*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+/*Urbanist font*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+
+
+.App {
+  background-color:rgb(232, 171, 232);
+}
+
+.HeadImage {
+  width: 100%;
+  height: 400px;
+  padding-left: 0px;
+}
+
+.App-link {
+  color: black;
+}
+
+.Nav-bar-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px 20px;
+  list-style-type: none;
+  font-family: lato;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  color: black;
+ font-family: Lato;
+ 
+}
+
+.List {
+  float: center;
+  text-decoration: none;
+  color: black;
+  font-family: Lato;
+}
+
+.List:hover{
+  color:  rgb(208, 74, 74);
+}
+
+.Text-input {
+  padding: 5px 300px; 
+  font-family: Lato;
+}
+
+.Button-submit {
+  padding: 5px 20px;
+  font-family: Lato;
+  
+}
+
+.product {
+  padding-left: 25%;
+padding-right: 25%;
+text-align: justify;
+
+}
+/* 
+.List-element{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  border: 1px solid #999;
+
+} */
+
+.Product-div{
+  display: grid;
+  grid-template-columns: 400px 350px 100px;
+  grid-template-rows: 80px 50px 40px; 
+  column-gap: 15px;
+  row-gap: 20px;
+  border: 3px solid rgb(232, 171, 232);
+  background-color: rgb(240, 206, 240);
+ 
+
+}
+
+@media (max-width:860px) {
+
+  .Product-div{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    grid-template-rows: 80px 50px 40px; 
+    column-gap: 15px;
+    row-gap: 20px;
+    border: 3px solid rgb(232, 171, 232);
+    background-color: rgb(240, 206, 240);
+   
+  
+  }
+}
+
+@media (max-width:900px) {
+
+  .Product-div{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    grid-template-rows: 80px 50px 40px; 
+    column-gap: 15px;
+    row-gap: 20px;
+    border: 3px solid rgb(232, 171, 232);
+    background-color: rgb(240, 206, 240);
+   
+  
+  }
+}
+
+
+
+img {
+  display: flex;
+  flex-basis: 40%;
+  float: inline-start;
+  margin-right: 5px;
+  height: 150px;  
+  width: 150px;  
+  padding-left: 30px;
+  padding-top: 10px;
+  
+  
+}
+
+.title {
+ text-align: justify;
+ padding-left: 27%;
+ padding-top: 40px;
+ font-family: Lato;
+}
+
+button {
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  background-color:rgb(97, 4, 70);
+  color:  white;
+  border-radius: 10%;
+  cursor:pointer;
+}
+
+button:active{
+ background-color: rgb(208, 74, 74);
+}
+button:hover{
+  background-color: rgb(208, 74, 74);
+}
+
+.Media {
+  padding-top: 20px;
+  text-align: center;
+  font-family: Lato;
+}
+.Text-input {
+  margin-left: 27%;
+  padding-left: 20%;
+  padding-right: 10%;
+  padding-bottom: 10px;
+}
+
+.page-number {
+  display: inline-block;
+  margin: 0 26px;
+  padding-left: 26%;
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: Lato;
+}
+.page-number:hover {
+  color:rgb(208, 74, 74);
+}
+
+.empty, .counts, .items-basket {
+  text-align: center;
+}
+
+.total-price{
+  border: 1px solid rgb(237, 164, 198);
+  background-color:rgb(187, 34, 187);
+  text-align: center;
+  font-weight: bold;
+  font-family: Lato;
+  color: white;
+
+  
+}
+
+.welcome-page, .p1, .work  {
+  text-align: center;
+  text-align: justify;
+  padding-left: 30%;
+  font-family: Lato;
+}
+.typed {
+  text-align: center;
+  font-weight: bold;
+  font-family: Lato;
+}
+
+.List-element {
+  font-family: Lato;
+  overflow-wrap: break-word;
+  inline-size: 200px;
+ 
+
+}
+
+.pages {
+  text-align: center;
+  
+}

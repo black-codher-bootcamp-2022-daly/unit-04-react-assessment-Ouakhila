@@ -1,8 +1,8 @@
 # React Assessment
 
-[TODO: Replace with your Netflify status badge]
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a6c52951-721b-438c-a639-814e1fff1b88/deploy-status)](https://app.netlify.com/sites/glittery-taffy-b1f1aa/deploys)
 
-[TODO: Replace with a link to your Netlify deployed solution here]
+glittery-taffy-b1f1aa.netlify.app
 
 For your unit 4 assessment you will be building a Media Store App that allows users to search the iTunes store for music, videos, TV shows and other media types.
 
@@ -16,7 +16,7 @@ This repository contains a basic React app. To install the basic packages needed
 
 The finished app should include the following functionality:
 
-1. A user should have the ability to add and remove items from a basket. 
+1. A user should have the ability to add and remove items from a basket.
 1. The basket should display the number of items added.
 1. A user should be able to search the iTunes Search API using a text search field and review a list of results.
 1. A user should be able to add and remove items in the search results to and from their basket.
@@ -24,9 +24,9 @@ The finished app should include the following functionality:
 
 By the due date of this assessment you must have what is stated in the [criteria, detailed below,](#assessment-criteria) pushed to GitHub ready to be marked. You must also have your working code [deployed to Netlify](https://docs.netlify.com/site-deploys/create-deploys/) and your [site's status badge](https://docs.netlify.com/monitor-sites/status-badges/) added to this file (`README.md`)
 
-The tasks and homework throughout unit 4 explain how to build a __Bookcase React App__ to store books. The __Bookcase React App__ is an example of a __SPA (Single-Page App)__. The same functionality and concepts can be used to build your Media Store app for this assessment.
+The tasks and homework throughout unit 4 explain how to build a **Bookcase React App** to store books. The **Bookcase React App** is an example of a **SPA (Single-Page App)**. The same functionality and concepts can be used to build your Media Store app for this assessment.
 
-The main functionality of the __Bookcase React App__ was the ability to `add` and `remove` from a `<BookList/>` component and search a third party API. The __Bookcase React App__ also used the `BrowserRouter` module to create new pages.
+The main functionality of the **Bookcase React App** was the ability to `add` and `remove` from a `<BookList/>` component and search a third party API. The **Bookcase React App** also used the `BrowserRouter` module to create new pages.
 
 ## Assessment Criteria
 
@@ -61,36 +61,40 @@ Ensure your app has the following file structure and functionality:
 Ensure your application is broken down into components. Each component should be a logical representation of objects displayed in your application.
 
 ### `App.js`
-This is the main component of your application. The following functions will be defined in this file: 
+
+This is the main component of your application. The following functions will be defined in this file:
+
 - `addToBasket()`:
-    Allows a **product** to be added to the `<Basket/>`
+  Allows a **product** to be added to the `<Basket/>`
 
 - `removeFromBasket()`:
-    Allows a **product** to be removed from the `<Basket/>`
+  Allows a **product** to be removed from the `<Basket/>`
 
 - `search()`:
-    Searches the iTunes API for the `terms` entered by the user
+  Searches the iTunes API for the `terms` entered by the user
 
-When started, the app should load an initial set of items from a local JSON file. Rename the example file [**`\src\models\example-data.json`**](.\src\models\example-data.json) to `data.json` and pass items from here into your `<ProductList/>` component. 
+When started, the app should load an initial set of items from a local JSON file. Rename the example file [**`\src\models\example-data.json`**](.\src\models\example-data.json) to `data.json` and pass items from here into your `<ProductList/>` component.
 
 Each object in the JSON file should be rendered by your `<Product/>` component.
 
 Each **product** should have a button to `Add to Basket`. When clicked the item should be removed from `<ProductList/>` and added to your `<Basket/>` component.
 
 ### `Search.js`
-`Search.js` will return a form with the following identifier `id="searchAPI"` e.g., `<form id="searchAPI">`. The form should have at least one text field for keyword input e.g. `<input id="term"/>` and a button to submit the form. 
 
+`Search.js` will return a form with the following identifier `id="searchAPI"` e.g., `<form id="searchAPI">`. The form should have at least one text field for keyword input e.g. `<input id="term"/>` and a button to submit the form.
 
 The search should be available on the home page of your app. Your search `<form/>` will need to have an `onSubmit()` handler that will call your `search()` function. The `search()` function will return results of the [iTunes Search API](#itunes-search-api)
 
 Your app should display the results of the search in an component called `<ProductList/>` with the identifier `id="results"` e.g. `<div id="results"/>`.
 
 ### `Basket.js`
-Users should be able to navigate to their `<Basket/>` and view all saved items. When their `<Basket/>` is empty a message should be displayed:
+
+Users should be able to navigate to their `<Basket/>` and view all saved items. When their `<Basket/>` is empty a message should be displayed in an element with the `empty` class attribute set, that includes the phrase:
 
 ```
-"Sorry, no items in basket" 
+"No items found"
 ```
+
 Users should be able to add items returned in the results from the iTunes Search API and items in the `data.json` to their `<Basket/>` component.
 
 Users should be able to see a running total/tally of the costs of the items in their basket as well as the number of items. The total should be displayed in a `<BasketTotal />` component.
@@ -101,8 +105,8 @@ Users should be able to see a running total/tally of the costs of the items in t
 
 Each item in your `<Basket/>` should have a button to `Remove from basket`. When clicked, the item should be removed from the `<Basket/>` and restored to the `<ProductList />` component.
 
-Your app should keep a count of the number of items in your `<Basket/>` and display the count in a `<BasketCount />` component, e.g. 
-    
+Your app should keep a count of the number of items in your `<Basket/>` and display the count in a `<BasketCount />` component, e.g.
+
 ```XML
 <BasketCount basketCount={count} />
 ```
@@ -145,7 +149,7 @@ To navigate to the routes above, your `<Header/>` file should contain the follow
 
 ## `Product.js`
 
-Expected **props** for the `<Product/>` component are listed below:
+The component should render in an element with the `product` class attribute set. Expected **props** for the `<Product/>` component are listed below:
 
 ### Props
 
@@ -164,10 +168,10 @@ Example expected props. Please note this is not an exhaustive list, but the mini
 
 ## `ProductList.js`
 
-When the `<ProductList/>` is empty a message should be displayed:
+When the `<ProductList/>` is empty a message should be displayed in an element with the `empty` class attribute set, that includes the phrase:
 
 ```
-"No items found..." 
+"No items found"
 ```
 
 Expected **props** for the `<ProductList/>` component are listed below:
@@ -186,15 +190,16 @@ Example expected props. Please note this is not an exhaustive list, but the mini
 
 ### Advanced Navigation
 
-Add pagination (next and previous buttons). *This will require storing the book data and page number in state, then only showing so many results per page*
+Add pagination (next and previous buttons). _This will require storing the book data and page number in state, then only showing so many results per page_
 
 Add numbered pages and display the results of the search.
 
 ### Animation/Interactivity
 
 Add some animation or transitions to the application, i.e.
+
 - Consider animating the selection and deselection of books.
-- An animated results count when the search returns more than one page of results. 
+- An animated results count when the search returns more than one page of results.
 
 ### Product Differentiation
 
@@ -211,15 +216,15 @@ The [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentati
 An example of the output from a search can be found in the **models** folder [example-data.json](./models/example-data.json).
 
 The following example show a call to the API to search the _[iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)_ for the word `orange` using the `term` query with a `limit` of 15, e.g.
-    
+
 ```sh
 > curl https://itunes.apple.com/search?term=orange&limit=30&explicit=no
 ```
 
-
 Use the following link to find out more details about how to use the _[iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)_.
 
 ## ⚠️API Warnings:
+
 - To improve response times, minimize the number of search results the Search API returns by specifying an appropriate value for the limit parameter key.
 - The Search API is limited to approximately **20 calls per minute** (subject to change).
 
